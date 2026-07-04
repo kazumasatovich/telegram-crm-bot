@@ -1,5 +1,5 @@
 [tool.ruff]
-line-lenght = 88
+line-length = 88
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "UP", "B", "SIM", "N"]
@@ -12,10 +12,14 @@ name = "telegram-crm-bot"
 version = "0.0.0"
 description = "Телеграм-бот для менеджмента заявок"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 authors = [
     { name = "Kazuma", email = "hmelevski_1948@mail.ru" }
 ]
 dependencies = [
     "aiogram>=3.29.0"
 ]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
