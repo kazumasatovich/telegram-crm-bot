@@ -6,6 +6,7 @@ select = ["E", "F", "W", "I", "UP", "B", "SIM", "N"]
 
 [tool.mypy]
 disallow_untyped_defs = true
+ignore_missing_imports = true
 
 [project]
 name = "telegram-crm-bot"

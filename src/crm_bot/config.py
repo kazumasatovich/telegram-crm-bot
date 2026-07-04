@@ -20,4 +20,4 @@ def load_config() -> Config:
     raw_ids = os.getenv("MANAGER_IDS", "")
     manager_ids = [int(i) for i in raw_ids.split(",") if i.strip()]
 
-    return Config(bot_token=token, managers_ids=manager_ids)
+    return Config(bot_token=token, manager_ids=manager_ids)
