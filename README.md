@@ -21,7 +21,7 @@
 
 ```mermaid
 flowchart TD
-    U[Пользователь Telergram] --> B[bot.py]
+    U[Пользователь Telegram] --> B[bot.py]
     B --> H[handlers.py]
     H --> S[storage.py]
     H --> C[config.py]
