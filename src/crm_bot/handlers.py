@@ -16,6 +16,18 @@ def setup_handlers(storage: RequestStorage, config: Config) -> Router:
             "Привет! Опишите вашу заявку одним сообщением, и мы свяжемся с вами."
         )
 
+    @router.message(Command("help"))
+    async def cmd_help(message: Message) -> None:
+        await message.answer(
+            "Доступные команды:\n"
+            "/start — начать\n"
+            "/help — справка\n"
+            "Просто напишите сообщение, чтобы оставить заявку.\n\n"
+            "Для менеджеров:\n"
+            "/requests — список заявок\n"
+            "/status <id> <статус> — сменить статус"
+        )
+
     @router.message(Command("requests"))
     async def cmd_requests(message: Message) -> None:
         if message.from_user is None:
