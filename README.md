@@ -38,7 +38,7 @@ flowchart TD
 ### Limitations & Roadmap
 
 - **Storage:** In-memory storage (data resets upon application restart).
-- **Hosting:** Runs locally on host machine.
+- **Hosting:** In some region VPN in TUN mod is needed to pass the limitations
 - **Roadmap:** Integrate **PostgreSQL** database and deploy to a remote VPS.
 
 ### Installation
@@ -67,6 +67,22 @@ MANAGER_IDS=your_telegram_id
 ```bash
 python -m crm_bot.bot
 ```
+
+### Docker
+
+Build the image:
+
+```bash
+docker build -t crm-bot .
+```
+
+Run the container (secrets are passed at runtime via `--env-file` and are never baked into the image):
+
+```bash
+docker run --rm --env-file .env crm-bot
+```
+
+> `.env` is excluded from the build context via `.dockerignore`, so the token never appears in image layers.
 
 ### Commands
 
@@ -112,7 +128,7 @@ flowchart TD
 ### Ограничения и планы
 
 - **Хранение данных:** В памяти (In-Memory), история сбрасывается при перезапуске.
-- **Запуск:** Локальный запуск на ПК (в РФ требуется VPN в TUNNEL-режиме или прокси для взаимодействия с Telegram API).
+- **Запуск:** в РФ требуется VPN в TUNNEL-режиме.
 - **В планах:** Перенос хранения данных на **PostgreSQL** и деплой на VPS.
 
 ### Установка
@@ -141,6 +157,22 @@ MANAGER_IDS=твой_telegram_id
 ```bash
 python -m crm_bot.bot
 ```
+
+### Docker
+
+Собрать образ:
+
+```bash
+docker build -t crm-bot .
+```
+
+Запустить контейнер (секреты передаются в рантайме через `--env-file` и не попадают в образ):
+
+```bash
+docker run --rm --env-file .env crm-bot
+```
+
+> `.env` исключён из контекста сборки через `.dockerignore`, поэтому токен не попадает в слои образа.
 
 ### Команды бота
 
