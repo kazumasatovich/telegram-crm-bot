@@ -134,7 +134,7 @@ flowchart TD
 ### Установка
 
 ```bash
-git clone git@github.com:kazumasatovich/telegram-crm-bot.git
+git clone https://github.com/kazumasatovich/telegram-crm-bot
 cd telegram-crm-bot
 python3 -m venv .venv
 source .venv/bin/activate
