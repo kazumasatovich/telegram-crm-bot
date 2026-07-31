@@ -68,6 +68,20 @@ MANAGER_IDS=your_telegram_id
 python -m crm_bot.bot
 ```
 
+### Troubleshooting
+
+The health check is performed before polling starts.
+
+#### Error: `Error connection to Telegram, check your network`
+- **Return code:** 1
+- **Reason:** The network does not allow access to Telegram servers.
+- **Solution:** Check your network or enable VPN (TUN mode).
+
+#### Error: `Telegram server says - Unauthorized`
+- **Return code:** 1
+- **Reason:** The bot token in `.env` is invalid or missing.
+- **Solution:** Check the validity of the token with [@BotFather](https://t.me/BotFather).
+
 ### Docker
 
 Build the image:
@@ -157,6 +171,20 @@ MANAGER_IDS=твой_telegram_id
 ```bash
 python -m crm_bot.bot
 ```
+
+### Частые ошибки
+
+Проверка работоспособности (health-check) выполняется до старта polling.
+
+#### Ошибка: `Error connection to Telegram, check your network`
+- **Код возврата:** 1
+- **Причина:** Сеть не позволяет обратиться к серверам Telegram.
+- **Решение:** Проверьте подключение к сети или включите VPN (в режиме TUN).
+
+#### Ошибка: `Telegram server says - Unauthorized`
+- **Код возврата:** 1
+- **Причина:** В `.env` указан неверный или недействительный токен бота.
+- **Решение:** Проверьте действительность токена у [@BotFather](https://t.me/BotFather).
 
 ### Docker
 
