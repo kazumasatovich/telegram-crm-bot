@@ -37,9 +37,10 @@ flowchart TD
 
 ### Limitations & Roadmap
 
-- **Storage:** In-memory storage (data resets upon application restart).
-- **Hosting:** In some region VPN in TUN mod is needed to pass the limitations
-- **Roadmap:** Integrate **PostgreSQL** database and deploy to a remote VPS.
+- **Clearing the request storage when restarting the bot:** in progress at issue #2
+- **Launch:** A VPN in TUNNEL mode is required for local launch in the Russian Federation.
+- **No error when the manager ID list is empty:** in progress at issue #3
+- **Roadmap:** Integrate **PostgreSQL** database.
 
 ### Installation
 
@@ -87,16 +88,33 @@ The health check is performed before polling starts.
 Build the image:
 
 ```bash
-docker build -t crm-bot .
+docker build -t telegram-crm-bot .
 ```
 
 Run the container (secrets are passed at runtime via `--env-file` and are never baked into the image):
 
 ```bash
-docker run --rm --env-file .env crm-bot
+docker run -d \
+  --name telegram-crm-bot \
+  --env-file .env \
+  --restart unless-stopped \
+  telegram-crm-bot
 ```
 
+The `--restart unless-stopped` flag ensures that the bot will automatically restart if it crashes or the server restarts (unless it is manually stopped).
+
 > `.env` is excluded from the build context via `.dockerignore`, so the token never appears in image layers.
+
+### Deploy
+The bot is deployed on a VPS (Ubuntu 24.04 LTS) in a Docker container.
+
+1. Clone the repository: `git clone https://github.com/kazumasatovich/telegram-crm-bot && cd telegram-crm-bot`
+
+2. Create an `.env` file with the keys `BOT_TOKEN` and `MANAGER_IDS`.
+
+3. Build and run the container.
+
+4. The status and logs can be checked using the commands `docker ps` and `docker logs -f telegram-crm-bot`.
 
 ### Commands
 
@@ -141,9 +159,10 @@ flowchart TD
 
 ### Ограничения и планы
 
-- **Хранение данных:** В памяти (In-Memory), история сбрасывается при перезапуске.
-- **Запуск:** в РФ требуется VPN в TUNNEL-режиме.
-- **В планах:** Перенос хранения данных на **PostgreSQL** и деплой на VPS.
+- **Очищение хранилища запросов при перезапуске бота:** решается в issue #2
+- **Запуск:** для локального запуска в РФ требуется VPN в TUNNEL-режиме.
+- **Отсутствие ошибки при пустом списке ID менеджеров:** решается в issue #3
+- **В планах:** Перенос хранения данных на **PostgreSQL**.
 
 ### Установка
 
@@ -191,16 +210,33 @@ python -m crm_bot.bot
 Собрать образ:
 
 ```bash
-docker build -t crm-bot .
+docker build -t telegram-crm-bot .
 ```
 
 Запустить контейнер (секреты передаются в рантайме через `--env-file` и не попадают в образ):
 
 ```bash
-docker run --rm --env-file .env crm-bot
+docker run -d \
+  --name telegram-crm-bot \
+  --env-file .env \
+  --restart unless-stopped \
+  telegram-crm-bot
 ```
 
+Флаг `--restart unless-stopped` гарантирует автоматический перезапуск бота при сбоях или перезагрузке сервера (если он не был остановлен вручную).
+
 > `.env` исключён из контекста сборки через `.dockerignore`, поэтому токен не попадает в слои образа.
+
+### Деплой
+Бот разворачивается на VPS (Ubuntu 24.04 LTS) в Docker-контейнере.
+
+1. Клонируйте репозиторий: `git clone https://github.com/kazumasatovich/telegram-crm-bot && cd telegram-crm-bot`
+
+2. Создайте файл `.env` с ключами `BOT_TOKEN` и `MANAGER_IDS`.
+
+3. Соберите и запустите контейнер.
+
+4. Состояние и логи проверяются командами `docker ps` и `docker logs -f telegram-crm-bot`.
 
 ### Команды бота
 
