@@ -15,9 +15,11 @@ def load_config() -> Config:
 
     token = os.getenv("BOT_TOKEN")
     if not token:
-        raise ValueError("BOT_TOKEN не найдет в .env")
+        raise ValueError("BOT_TOKEN не найден в .env")
 
     raw_ids = os.getenv("MANAGER_IDS", "")
     manager_ids = [int(i) for i in raw_ids.split(",") if i.strip()]
+    if not manager_ids:
+        raise ValueError("MANAGER_IDS пуст или не задан, возьми у @userinfobot и положи в .env")
 
     return Config(bot_token=token, manager_ids=manager_ids)
