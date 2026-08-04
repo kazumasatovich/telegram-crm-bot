@@ -71,6 +71,18 @@ python -m crm_bot.bot
 
 ### Troubleshooting
 
+Configuration check starts before connection to Telegram API.
+
+#### Error: `BOT_TOKEN not found, get it from @BotFather and put it in .env`
+- **Return code:** 1
+- **Reason:** The `BOT_TOKEN` variable is missing.
+- **Solution:** Check the BOT_TOKEN with [@BotFather](https://t.me/BotFather) and write it to `.env`.
+
+#### Error: `MANAGER_IDS is empty or not set; get it from @userinfobot and put it in .env`
+- **Return code:** 1
+- **Reason:** The `MANAGER_IDS` variable is missing or has no numeric value
+- **Solution:** Check the ID with [@userinfobot](https://t.me/userinfobot) and write it to `.env`.
+
 The health check is performed before polling starts.
 
 #### Error: `Error connection to Telegram, check your network`
@@ -80,7 +92,7 @@ The health check is performed before polling starts.
 
 #### Error: `Telegram server says - Unauthorized`
 - **Return code:** 1
-- **Reason:** The bot token in `.env` is invalid or missing.
+- **Reason:** The bot token in `.env` is invalid.
 - **Solution:** Check the validity of the token with [@BotFather](https://t.me/BotFather).
 
 ### Docker
@@ -192,6 +204,18 @@ python -m crm_bot.bot
 ```
 
 ### Частые ошибки
+
+Проверка конфигурации начинается перед подключением к Telegram API.
+
+#### Ошибка: `BOT_TOKEN not found, get it from @BotFather and put it in .env`
+- **Код возврата:** 1
+- **Причина:** Переменная `BOT_TOKEN` отсутствует.
+- **Решение:** Проверьте BOT_TOKEN у [@BotFather](https://t.me/BotFather) и запишите его в `.env`.
+
+#### Ошибка: `MANAGER_IDS is empty or not set; get it from @userinfobot and put it in .env`
+- **Код возврата:** 1
+- **Причина:** Переменная `MANAGER_IDS` отсутствует, либо не имеет числового значения
+- **Решение:** Проверьте ID у [@userinfobot](https://t.me/userinfobot) и запишите его в `.env`.
 
 Проверка работоспособности (health-check) выполняется до старта polling.
 
