@@ -5,3 +5,5 @@ __pycache__/
 .venv/
 .env
 ~projects/
+*:Zone.Identifier
+*.egg-info/
