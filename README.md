@@ -39,7 +39,6 @@ flowchart TD
 
 - **Clearing the request storage when restarting the bot:** in progress at issue #2
 - **Launch:** A VPN in TUNNEL mode is required for local launch in the Russian Federation.
-- **No error when the manager ID list is empty:** in progress at issue #3
 - **Roadmap:** Integrate **PostgreSQL** database.
 
 ### Installation
@@ -173,7 +172,6 @@ flowchart TD
 
 - **Очищение хранилища запросов при перезапуске бота:** решается в issue #2
 - **Запуск:** для локального запуска в РФ требуется VPN в TUNNEL-режиме.
-- **Отсутствие ошибки при пустом списке ID менеджеров:** решается в issue #3
 - **В планах:** Перенос хранения данных на **PostgreSQL**.
 
 ### Установка
