@@ -2,7 +2,7 @@
 -- Сама схема олицетворяет фиксированное проектное решение
 CREATE TABLE users (
     id bigint PRIMARY KEY,
-    username text NOT NULL,
+    username text,
     last_message_time timestamptz NOT NULL
 );
 
