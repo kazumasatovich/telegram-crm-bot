@@ -2,7 +2,7 @@
 -- Сама схема олицетворяет фиксированное проектное решение
 CREATE TABLE users (
     id bigint PRIMARY KEY,
-    username text NOT NULL,
+    username text,
     last_message_time timestamptz NOT NULL
 );
 
@@ -12,4 +12,6 @@ CREATE TABLE requests (
     status text NOT NULL CHECK (status IN ('new', 'in_progress','done')),
     created_at timestamptz NOT NULL,
     request_text text NOT NULL
+        CONSTRAINT request_text_not_blank
+        CHECK (char_length(btrim(request_text, E' \t\n\r' || chr(160))) > 0)
 );
